@@ -1,3 +1,4 @@
+// Google script within the registration tracker Sheet that adds new rows based on a public web service call
 function doGet(e){
   return handleResponse(e);
 }
