@@ -1,0 +1,148 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <script>
+  function docusignRedirect()
+  {
+    var powerFormId = "3a663b3f-702c-452f-89c5-663a9881da2b";
+    var destinationUrl = 
+      "https://na3.docusign.net/Member/PowerFormSigning.aspx?PowerFormId=" + powerFormId + "&env=na3-eu1&v=2" +
+      "&Parent_UserName=" + encodeURIComponent(document.getElementById("ParentFirst").value) + " " +
+        encodeURIComponent(document.getElementById("ParentLast").value)+
+      "&Parent_Email=" + encodeURIComponent(document.getElementById("ParentEmail").value) + 
+      "&Student_UserName=" + encodeURIComponent(document.getElementById("StudentFirst").value) + " " +
+        encodeURIComponent(document.getElementById("StudentLast").value) +
+      "&Student_Email=" + encodeURIComponent(document.getElementById("StudentEmail").value) + 
+      "&Instrument=" + encodeURIComponent(document.getElementById("Instrument").value);
+    window.location.replace(destinationUrl);
+    return false;
+  }
+  function postToGoogle() {
+    var $form = $('form#request-form');
+    var request = $.ajax({
+      url: "https://script.google.com/macros/s/AKfycbwSDm7-DTZrUiWfZ26xXeETNhXfxK1R8SU2_7y63xBIEAGi4EY/exec",
+      data: $form.serializeArray(),
+      type: "GET",
+      dataType: "json",
+      crossDomain: true
+    });
+    request.done(function( msg ) {
+      docusignRedirect();
+    });
+    request.fail(function( jqXHR, textStatus ) {
+      alert("Google request failed: " + textStatus);
+    });
+    return false;
+  }
+</script>
+  <div class="container" style="width=80%;font-size: 16px;">
+    <h3>Marching Band Commitment Form</h3><br/>
+    <p>
+    <b>Parent</b> must enter all information below and click the 
+    Sign Commitment Form button.
+    </p>
+    <p>  
+    Do not use an @fcpsschools.net email address because FCPS blocks 
+    all external emails.
+    </p>
+    <p>
+    You will then be re-directed to a DocuSign page where the <b>Parent</b> 
+    must electronically sign the commitment form.
+    </p>
+      <p>
+    After the Parent signs, the <b>Student</b> will receive 
+    an email from DocuSign requesting electronic signature. 
+    </p>
+    <p>
+    Please ensure your Student acts promptly on that email.
+    Both Parent AND Student must sign or submission will not be accepted.
+    </p>
+  <form id="request-form" class="form-horizontal pt-2" method="post" onSubmit="return postToGoogle()">
+      <fieldset>
+        <div class="form-group row">
+          <label class="col-md-4 control-label pt-1" for="ParentFirst">Parent First Name</label>  
+          <div class="col-md-4">
+            <input id="ParentFirst" name="ParentFirst" type="text" placeholder="" class="form-control input-md" required="">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-md-4 control-label pt-1" for="ParentLast">Parent Last Name</label>  
+          <div class="col-md-4">
+            <input id="ParentLast" name="ParentLast" type="text" placeholder="" class="form-control input-md" required="">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-md-4 control-label pt-1" for="ParentEmail">Parent Email</label>  
+          <div class="col-md-4">
+            <input id="ParentEmail" name="ParentEmail" type="email" placeholder="" class="form-control input-md" required="">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-md-4 control-label pt-1" for="StudentFirst">Student First Name</label>  
+          <div class="col-md-4">
+            <input id="StudentFirst" name="StudentFirst" type="text" placeholder="" class="form-control input-md" required="">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-md-4 control-label pt-1" for="StudentLast">Student Last Name</label>  
+          <div class="col-md-4">
+            <input id="StudentLast" name="StudentLast" type="text" placeholder="" class="form-control input-md" required="">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-md-4 control-label pt-1" for="StudentEmail">Student Email</label>  
+          <div class="col-md-4">
+            <input id="StudentEmail" name="StudentEmail" type="email" placeholder="" class="form-control input-md" required="">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-md-4 control-label pt-1" for="Gender">Gender</label>
+          <div class="col-md-4">
+            <select id="Gender" name="Gender" class="form-control" required>
+              <option selected></option>
+              <option value="M">M</option>
+              <option value="F">F</option>
+            </select>
+          </div>
+        </div>        
+        <div class="form-group row">
+          <label class="col-md-4 control-label pt-1" for="Instrument">Marching Instrument or Guard</label>
+          <div class="col-md-4">
+            <select id="Instrument" name="Instrument" class="form-control" required>
+              <option selected></option>
+              <option value="Flute">Flute</option>
+              <option value="Clarinet">Clarinet</option>
+              <option value="Saxophone - Alto">Saxophone - Alto</option>
+              <option value="Saxophone - Tenor">Saxophone - Tenor</option>
+              <option value="Horn">Horn</option>
+              <option value="Trumpet">Trumpet</option>
+              <option value="Trombone">Trombone</option>
+              <option value="Euphonium">Euphonium</option>
+              <option value="Tuba">Tuba</option>
+              <option value="Percussion - Drumline">Percussion - Drumline</option>
+              <option value="Percussion - Pit">Percussion - Pit</option>
+              <option value="Guard">Guard</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-md-4 control-label pt-1" for="Grade">Grade Next Fall</label>
+          <div class="col-md-4">
+            <select id="Grade" name="Grade" class="form-control" required>
+              <option selected></option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+              <option value="11">11</option>
+              <option value="12">12</option>
+            </select>
+          </div>
+        </div>        
+        <div class="form-group row pt-2">
+          <div class="col-md-4">
+            <button type="submit" id="submitbutton" name="submitbutton" class="btn btn-danger">Sign Commitment Form</button>
+          </div>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
