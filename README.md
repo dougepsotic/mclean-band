@@ -7,6 +7,6 @@ Contents of the HTML area on the page https://mcleanband.org/marching-band-commi
 Includes a REST call to the Google Sheet where registrations are tracked to add a new row for the student.
 Redirects to a DocuSign Powerform, pre-populating fields on the electronic document for signature.
 
-<b>gscode.gs</b>
+<b>code.gs</b>
 
 Script within the registrations Google Sheet (exposed an an external web servie) that adds a new row to the bottom with the supplied fields.
