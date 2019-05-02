@@ -23,7 +23,7 @@ function handleResponse(e) {
       } else {
         row.push(e.parameter[headers[i]]);
       }
-      if (i == 9) {
+      if (i == 10) {
         break;
       }
     }
