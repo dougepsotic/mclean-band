@@ -10,3 +10,9 @@ Redirects to a DocuSign Powerform, pre-populating fields on the electronic docum
 <b>code.gs</b>
 
 Script within the registrations Google Sheet (exposed an an external web servie) that adds a new row to the bottom with the supplied fields.
+
+<b>health-form-upload.html</b>
+
+Contents of the HTML area on the page https://mcleanband.org/health-form-upload.html.
+Contains links to the three optional health form fillable PDFs hosted on the FCPS site.
+Redirects to a Dropbox file request page where completed forms can be uploaded to a folder.
