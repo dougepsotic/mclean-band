@@ -9,7 +9,7 @@ Redirects to a DocuSign Powerform, pre-populating fields on the electronic docum
 
 <b>code.gs</b>
 
-Script within the registrations Google Sheet (exposed an an external web servie) that adds a new row to the bottom with the supplied fields.
+Script within the registrations Google Sheet (https://docs.google.com/spreadsheets/d/1NqSMqx7qbxg1bBnxN2C5cRxCLTp15TFZCtXBtbvhJ6E/edit#gid=703035538), exposed an an external web service, that adds a new row to the bottom with the supplied fields.
 
 <b>health-form-upload.html</b>
 
