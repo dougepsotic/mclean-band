@@ -32,16 +32,15 @@
     });
     return false;
   }
+  function escapeRegExp(str) {
+    return str.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
+  }
 </script>
   <div class="container" style="width=80%;font-size: 16px;">
     <h3>Marching Band Commitment Form</h3><br/>
     <p>
     <b>Parent</b> must enter all information below and click the 
     Sign Commitment Form button.
-    </p>
-    <p>  
-    Do not use an @fcpsschools.net email address because FCPS blocks 
-    all external emails.
     </p>
     <p>
     You will then be re-directed to a DocuSign page where the <b>Parent</b> 
@@ -72,7 +71,13 @@
         <div class="form-group row">
           <label class="col-md-4 control-label pt-1" for="ParentEmail">Parent Email</label>  
           <div class="col-md-4">
-            <input id="ParentEmail" name="ParentEmail" type="email" placeholder="" class="form-control input-md" required="">
+            <input id="ParentEmail" name="ParentEmail" type="email" placeholder="" class="form-control input-md" required="" oninput="document.getElementById('ParenttEmailConfirm').pattern = escapeRegExp(this.value)">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-md-4 control-label pt-1" for="ParentEmailConfirm">Re-Enter Parent Email</label>  
+          <div class="col-md-4">
+            <input id="ParentEmailConfirm" name="ParentEmailConfirm" type="email" placeholder="" class="form-control input-md" required="" oninput="setCustomValidity('')" oninvalid="setCustomValidity('Parent Email fields must match')">
           </div>
         </div>
         <div class="form-group row">
@@ -90,13 +95,25 @@
         <div class="form-group row">
           <label class="col-md-4 control-label pt-1" for="StudentEmail">Student Email</label>  
           <div class="col-md-4">
-            <input id="StudentEmail" name="StudentEmail" type="email" placeholder="" class="form-control input-md" required="">
+            <input id="StudentEmail" name="StudentEmail" type="email" title="Do not use @fcpsschools.net address" placeholder="Do not use @fcpsschools.net address" class="form-control input-md" required="" pattern="^((?!@fcpsschools).)*$" oninput="document.getElementById('StudentEmailConfirm').pattern = escapeRegExp(this.value)">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-md-4 control-label pt-1" for="StudentEmailConfirm">Re-Enter Student Email</label>  
+          <div class="col-md-4">
+            <input id="StudentEmailConfirm" name="StudentEmailConfirm" type="email" placeholder="" class="form-control input-md" required="" oninput="setCustomValidity('')" oninvalid="setCustomValidity('Student Email fields must match')">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-md-4 control-label pt-1" for="StudentMobile">Student Mobile Phone</label>  
+          <div class="col-md-4">
+            <input id="StudentMobile" name="StudentMobile" type="text" title="###-###-#### (000-000-0000 if none)" placeholder="###-###-#### (000-000-0000 if none)" class="form-control input-md" required="" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}">
           </div>
         </div>
         <div class="form-group row">
           <label class="col-md-4 control-label pt-1" for="StudentID">FCPS Student ID</label>  
           <div class="col-md-4">
-            <input id="StudentID" name="StudentID" type="text" placeholder="" class="form-control input-md" required="">
+            <input id="StudentID" name="StudentID" type="number" placeholder="#######" class="form-control input-md" required="" pattern="[0-9]{7}">
           </div>
         </div>
         <div class="form-group row">
@@ -138,6 +155,18 @@
               <option value="10">10</option>
               <option value="11">11</option>
               <option value="12">12</option>
+            </select>
+          </div>
+        </div>        
+        <div class="form-group row">
+          <label class="col-md-4 control-label pt-1" for="TShirtSize">T-Shirt Size</label>
+          <div class="col-md-4">
+            <select id="TShirtSize" name="TShirtSize" class="form-control" required>
+              <option selected></option>
+              <option value="S">S</option>
+              <option value="M">M</option>
+              <option value="L">L</option>
+              <option value="XL">XL</option>
             </select>
           </div>
         </div>        
