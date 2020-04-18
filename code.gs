@@ -1,4 +1,3 @@
-// Google script within the registration tracker Sheet that adds new rows based on a public web service call
 function doGet(e){
   return handleResponse(e);
 }
@@ -23,7 +22,7 @@ function handleResponse(e) {
       } else {
         row.push(e.parameter[headers[i]]);
       }
-      if (i == 10) {
+      if (i == 12) {
         break;
       }
     }
